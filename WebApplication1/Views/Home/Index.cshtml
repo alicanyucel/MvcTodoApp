@@ -1,0 +1,48 @@
+﻿@model List<string>
+@{
+    ViewData["Title"] = "Home Page";
+    int index = 0;
+}
+<h1>TodoApplication</h1>
+<form asp-controller="Home" asp-action="Save" method="get">
+    <div class="form-group">
+        <label>Work</label>
+        <input class="form-control" name="work"/>
+
+    </div>
+    <div class="form-group mt-2">
+        <button type="submit" class="btn btn-dark w-100">
+            save
+        </button>
+    </div>
+</form>
+<hr />
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                #
+            </th>
+            <th>Work</th>
+            <th>Operations</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var todo in Model)
+        {
+            index++;
+            <tr>
+                <td>@index</td>
+                <td>@todo</td>
+                <td>
+                    <button class="btn btn-outline-primary btn-sm me-1">
+                        <i class="fa-solid fa-edit"></i>
+                    </button>
+                    <button class="btn btn-outline-danger btn-sm">
+
+                        <i class="fa-solid fa-trash"></i>
+                    </button></td>
+            </tr>
+        }
+    </tbody>
+</table>
